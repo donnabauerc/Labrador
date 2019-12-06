@@ -1,0 +1,25 @@
+= Pflichtenheft:
+Christian Donnabauer
+:toc:
+
+
+
+== Ausgangslage:
+
+Schüler gehen in die Volksschule Ansfelden. Um sie auf den Unterricht zu fokussieren, werden sie nach Auswahl des
+Lehrpersonals umgesetzt.
+
+== Problem:
+
+Da Schüler bei dieser Lösung selten zufrieden mit ihrem Sitzplatz sind, sind sie sauer auf die Lehrkraft. Außerdem führt
+dieser Prozess jedes Mal zu Diskussionen, welche Zeit kosten die man nicht hat.
+
+== Ziele:
+
+Das Programm soll:
+
+* Bestimmen wo welche Schülerin bzw. Schüler zu sitzen hat
+* Der Lehrkraft die Möglichkeit geben, welche Schüler nicht nebeneinander sitzen dürfen
+* Der Lehrkraft die Möglichkeit geben, zu bestimmen in welcher Reihe Schüler zu sitzen haben
+* Die genannten Bestimmungen abspeichern
+* [Sitzplan grafisch darstellen]
