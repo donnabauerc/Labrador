@@ -39,7 +39,7 @@ public class Main {
         tables = SitPupil.sitPupils(pupils);
 
         for (int i=0;i<tables.size();i++){
-            System.out.println(tables.get(i).toString());
+            System.out.println("Tisch "+(i+1)+" "+tables.get(i).toString());
             System.out.println("");
         }
     }
