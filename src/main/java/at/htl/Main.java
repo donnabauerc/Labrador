@@ -1,6 +1,7 @@
 package at.htl;
 
 import at.htl.entities.Pupil;
+import at.htl.entities.Table;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,7 +19,15 @@ public class Main {
 
         pupils = pupil.readPupils();
 
-        System.out.println(pupils.get(1));
+        List<Table> tables = new LinkedList<>();
+        Table table = new Table();
+
+        tables = table.sitPupils(pupils);
+
+        for (int i=0;i<tables.size();i++){
+            System.out.println(tables.get(i).toString());
+            System.out.println("");
+        }
     }
 
 
