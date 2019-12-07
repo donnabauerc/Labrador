@@ -20,9 +20,10 @@ public class SitPupil {
         Table table = new Table();
         Random random = new Random();
 
-        for(int i = pupils.size();i >= 2;i-=2){
+        for(int i = pupils.size();i > 0;i-=2){
             int temp1 = random.nextInt(pupils.size());
             Pupil left = pupils.get(temp1);
+
 
             int temp2 = random.nextInt(pupils.size());
             while(temp2 == temp1){
@@ -30,16 +31,20 @@ public class SitPupil {
             }
             Pupil right = pupils.get(temp2);
 
-            table.setLeft(left);
-            table.setRight(right);
-            tables.add(table);
+            if(validateSeats(left, right)){
+                table.setLeft(left);
+                table.setRight(right);
+                tables.add(table);
 
-            if(temp1 > temp2){
-                pupils.remove(temp1);
-                pupils.remove(temp2);
+                if(temp1 > temp2){
+                    pupils.remove(temp1);
+                    pupils.remove(temp2);
+                }else{
+                    pupils.remove(temp2);
+                    pupils.remove(temp1);
+                }
             }else{
-                pupils.remove(temp2);
-                pupils.remove(temp1);
+                i+=2;
             }
 
             table = new Table();
@@ -51,14 +56,15 @@ public class SitPupil {
     public static boolean validateSeats(Pupil left, Pupil right){
 
         for (Table table : Main.bannedTables) {
-            if(!left.equals(table.getLeft()) || !right.equals(table.getRight())){
-                return true;
+            if(left.equals(table.getLeft()) && right.equals(table.getRight())){
+                System.out.println("Nicht erlaubt!");
+                return false;
+            }else if(right.equals(table.getLeft()) && left.equals(table.getRight())){
+                System.out.println("Nicht erlaubt!");
+                return false;
             }
-            //nochmals umsetzen
-            System.out.println("*********Gefahr********");
         }
-
-        return false;
+        return true;
     }
 
 }
