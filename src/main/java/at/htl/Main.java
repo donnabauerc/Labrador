@@ -22,16 +22,26 @@ public class Main {
         Pupil pupil = new Pupil();
 
         pupils = pupil.readPupils();
+        int a = 0;
+        int b = 0;
 
-        System.out.print("Kat# 1: ");
-        int a = sc.nextInt()-1;
+        while(a > -1 && b > -1){
+            System.out.print("Kat# 1: ");
+            a = sc.nextInt()-1;
 
-        System.out.println();
+            System.out.println();
 
-        System.out.print("Kat# 2: ");
-        int b = sc.nextInt()-1;
+            System.out.print("Kat# 2: ");
+            b = sc.nextInt()-1;
 
-        bannedTables.add(new Table(-10, pupils.get(a), pupils.get(b)));
+            System.out.println();
+            System.out.println();
+            if(a >= 0 && b >= 0){
+                bannedTables.add(new Table(-10, pupils.get(a), pupils.get(b)));
+            }
+        }
+
+
 
         List<Table> tables = new LinkedList<>();
         Table table = new Table();
