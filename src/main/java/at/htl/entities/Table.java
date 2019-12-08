@@ -1,8 +1,5 @@
 package at.htl.entities;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class Table {
     private int id;
     private Pupil left;
@@ -40,12 +37,11 @@ public class Table {
     @Override
     public String toString() {
         try {
-            return "Table{" +
-                    "left=" + left.getLastName() +
-                    ", right=" + right.getLastName() +
-                    '}';
+            return "Tisch: " +
+                    "Linke Seite: " + left.getLastName() +
+                    ", Rechte Seite: " + right.getLastName();
         } catch (Exception e) {
-            return "Table{left=empty,right=empty}";
+            return "Tisch ist leer!";
         }
     }
 }

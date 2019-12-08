@@ -3,11 +3,6 @@ package at.htl;
 import at.htl.entities.Pupil;
 import at.htl.entities.Table;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -17,39 +12,49 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
         List<Pupil> pupils = new LinkedList<>();
-        Pupil pupil = new Pupil();
-
-        pupils = pupil.readPupils();
         int a = 0;
         int b = 0;
+        String input;
 
-        while(a > -1 && b > -1){
-            System.out.print("Kat# 1: ");
-            a = sc.nextInt()-1;
+        //reading pupils from csv
+        Pupil pupil = new Pupil();
+        pupils = pupil.readPupils();
 
+        System.out.println("Sitzplangenerator: ");
+        System.out.println();
+        System.out.println("Bitte geben Sie die Katalognummer " +
+                "(Nummer von 1-" + pupils.size() + ") jener Schüler an, die nicht" +
+                "nebeneinander sitzen sollen");
+
+        //setting banned kombinations (Table) of Pupils
+        do {
+            System.out.print("Katalognummer von Schüler 1: ");
+            a = sc.nextInt() - 1;
             System.out.println();
 
-            System.out.print("Kat# 2: ");
-            b = sc.nextInt()-1;
+            System.out.print("Katalognummer von Schüler 2: ");
+            b = sc.nextInt() - 1;
+            System.out.println();
 
-            System.out.println();
-            System.out.println();
-            if(a >= 0 && b >= 0){
-                bannedTables.add(new Table(-10, pupils.get(a), pupils.get(b)));
+            if (a >= 0 && b >= 0) {
+                bannedTables.add(new Table(-10, pupils.get(a), pupils.get(b))); //Banned Tables have id=-10
+            } else {
+                System.out.println("Eine der Katalognummern ist fehlerhaft!");
             }
-        }
 
+            System.out.print("Wollen Sie weitere Kombinationen setzen (j/n)?: ");
+            input = sc.nextLine();
 
+        } while (input != "n");
 
+        //Sitting Pupils on a Table & save tables
         List<Table> tables = new LinkedList<>();
         Table table = new Table();
-
         tables = SitPupil.sitPupils(pupils);
 
-        for (int i=0;i<tables.size();i++){
-            System.out.println("Tisch "+(i+1)+" "+tables.get(i).toString());
+        for (int i = 0; i < tables.size(); i++) {
+            System.out.println(tables.get(i).toString());
             System.out.println("");
         }
     }

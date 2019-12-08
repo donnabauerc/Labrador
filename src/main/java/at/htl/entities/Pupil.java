@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,17 +21,18 @@ public class Pupil {
         this.firstName = firstName;
     }
 
-    public List<Pupil> readPupils(){
+    //reading Pupils from CSV file
+    public List<Pupil> readPupils() {
         List<Pupil> pupils = new LinkedList<>();
-        try{
+        try {
             BufferedReader br = new BufferedReader(new InputStreamReader(getClass()
                     .getResourceAsStream("/pupils.csv"), StandardCharsets.UTF_8));
             br.readLine();
 
             String line;
-            for(int i=1;(line = br.readLine()) != null;i++){
+            for (int i = 1; (line = br.readLine()) != null; i++) {
                 String[] attributes = line.split(";");
-                if(attributes.length == 2){
+                if (attributes.length == 2) {
                     Pupil pupil = new Pupil(i, attributes[1], attributes[0]);
                     pupils.add(pupil);
                 }
@@ -66,10 +66,9 @@ public class Pupil {
 
     @Override
     public String toString() {
-        return "Pupil{" +
-                "katalogNumber=" + katalogNumber +
-                ", lastName='" + lastName + '\'' +
-                ", firstName='" + firstName + '\'' +
-                '}';
+        return "Schüler: " +
+                "Katalognummer:" + katalogNumber +
+                ", Name: " + lastName +
+                ", " + firstName;
     }
 }
